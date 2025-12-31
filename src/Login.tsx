@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Mail, Lock, Key, CreditCard } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -9,6 +11,8 @@ function Login() {
   const [message, setMessage] = useState('');
   const [showOtpFields, setShowOtpFields] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
 
   const validateEmail = (email: string) => {
     return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
@@ -60,8 +64,8 @@ function Login() {
       if (data.success) {
         setMessage('Login successful! Redirecting...');
         setTimeout(() => {
-          window.location.href = 'https://1secstory.com/edit_profile';
-        }, 1000);
+  navigate('/edit_profile');
+  }, 1000);
       } else {
         setMessage(data.message || 'Login failed');
       }
