@@ -49,8 +49,7 @@ function Login() {
       const response = await fetch('https://1secstory.com/verify_login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password, otp, card_id: cardId }),
-        credentials: 'include'
+        body: JSON.stringify({ email, password, otp, card_id: cardId })
       });
 
       const data = await response.json();
