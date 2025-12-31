@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Share2, Bookmark, Briefcase, Phone, Mail, Linkedin, Globe, MessageCircle, ChevronRight, CreditCard, Edit3 } from 'lucide-react';
+import { Share2, Bookmark, Briefcase, Phone, Mail, Linkedin, Globe, MessageCircle, CreditCard, Edit3 } from 'lucide-react';
 
 interface UserProfile {
   card_id: string;
@@ -157,27 +157,15 @@ export default function UserNFC() {
 
           {/* Micro Facts Section */}
           <div className="px-6 pb-6">
-            <div className="bg-gray-200 rounded-xl p-4">
+            <div className="bg-gray-200 rounded-xl p-4 max-h-48 overflow-y-auto">
               <h3 className="text-sm font-semibold text-gray-900 mb-2">Micro Facts</h3>
-              <p className="text-sm text-gray-700 leading-relaxed">
+              <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap break-words">
                 {profile.micro_facts && profile.micro_facts !== 'None' ? (
-                  <>
-                    {showFullBio ? profile.micro_facts : profile.micro_facts.slice(0, 150)}
-                    {profile.micro_facts.length > 150 && !showFullBio && '...'}
-                  </>
+                  profile.micro_facts
                 ) : (
                   <span className="text-gray-400">-</span>
                 )}
               </p>
-              {profile.micro_facts && profile.micro_facts !== 'None' && profile.micro_facts.length > 150 && (
-                <button
-                  onClick={() => setShowFullBio(!showFullBio)}
-                  className="text-blue-600 text-sm font-medium mt-2 flex items-center gap-1"
-                >
-                  Read {showFullBio ? 'less' : 'more'}
-                  <ChevronRight className={`w-4 h-4 transition-transform ${showFullBio ? 'rotate-90' : ''}`} />
-                </button>
-              )}
             </div>
           </div>
 
@@ -364,17 +352,17 @@ export default function UserNFC() {
           </div>
 
         </div>
+      </div>
 
-        {/* Edit Details Button */}
-        <div className="fixed bottom-6 right-6">
-          <a
-            href="https://1secstory.com/edit_profile"
-            className="flex items-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all font-medium"
-          >
-            <Edit3 className="w-5 h-5" />
-            Edit Details
-          </a>
-        </div>
+      {/* Edit Details Button - Fixed Bottom Right */}
+      <div className="fixed bottom-6 right-6 z-20">
+        <a
+          href="https://1secstory.com/edit_profile"
+          className="flex items-center gap-2 px-5 py-3 bg-white/80 backdrop-blur-md hover:bg-white/90 text-gray-800 rounded-full shadow-lg hover:shadow-xl transition-all font-medium border border-gray-200/50"
+        >
+          <Edit3 className="w-5 h-5" />
+          Edit Details
+        </a>
       </div>
     </div>
   );

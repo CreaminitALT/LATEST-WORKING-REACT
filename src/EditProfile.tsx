@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { User, Briefcase, MessageSquare, Phone, Mail, Linkedin, Globe, CreditCard, Key, Link2 } from 'lucide-react';
+import { User, Briefcase, MessageSquare, Phone, Mail, Linkedin, Globe, CreditCard, Link2, Bookmark } from 'lucide-react';
 
 interface ProfileData {
   display_name: string | null;
@@ -29,7 +29,7 @@ function EditProfile() {
     linkedin: '',
     website: '',
     payment_link: '',
-    nfc_pin_hash: '',
+    nfc_pin_hash: null,
     qr_link: ''
   });
 
@@ -321,43 +321,40 @@ function EditProfile() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">NFC PIN Hash</label>
-              <div className="relative">
-                <Key className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                <input
-                  type="text"
-                  value={formData.nfc_pin_hash || ''}
-                  onChange={(e) => handleChange('nfc_pin_hash', e.target.value)}
-                  placeholder="NFC PIN Hash"
-                  className="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all text-base"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">QR Link</label>
-              <div className="relative">
-                <Link2 className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                <input
-                  type="text"
-                  value={formData.qr_link || ''}
-                  onChange={(e) => handleChange('qr_link', e.target.value)}
-                  placeholder="QR redirect link"
-                  className="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all text-base"
-                />
-              </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">QR Link</label>
+            <div className="relative">
+              <Link2 className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <input
+                type="text"
+                value={formData.qr_link || ''}
+                onChange={(e) => handleChange('qr_link', e.target.value)}
+                placeholder="QR redirect link"
+                className="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all text-base"
+              />
             </div>
           </div>
 
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="w-full py-3.5 md:py-4 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm text-base"
-          >
-            {isLoading ? 'Saving Changes...' : 'Save Changes'}
-          </button>
+          <div className="flex gap-3">
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="flex-1 py-3.5 md:py-4 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm text-base"
+            >
+              {isLoading ? 'Saving Changes...' : 'Save Changes'}
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                const url = window.location.href;
+                navigator.clipboard.writeText(url);
+                setMessage('URL bookmarked to clipboard!');
+              }}
+              className="px-5 py-3.5 md:py-4 bg-gray-500 hover:bg-gray-600 active:bg-gray-700 text-white font-medium rounded-lg transition-colors shadow-sm flex items-center gap-2"
+            >
+              <Bookmark className="w-5 h-5" />
+            </button>
+          </div>
 
           {message && (
             <div className={`text-center text-sm font-medium ${
