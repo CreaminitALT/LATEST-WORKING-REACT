@@ -22,9 +22,6 @@ export default function UserNFC() {
   const [showFullBio, setShowFullBio] = useState(false);
   const cardId = searchParams.get('id');
 
-  useEffect(() => {
-    fetchProfile();
-  }, [cardId]);
 
   const fetchProfile = async () => {
     try {
