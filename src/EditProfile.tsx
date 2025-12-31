@@ -39,7 +39,9 @@ function EditProfile() {
 
   const loadSessionCard = async () => {
     try {
-      const response = await fetch('https://1secstory.com/get_session_card');
+      const response = await fetch('https://1secstory.com/get_session_card', {
+        credentials: 'include'
+      });
       const data = await response.json();
 
       if (!data.success) {
@@ -60,7 +62,8 @@ function EditProfile() {
       const response = await fetch('https://1secstory.com/get_public_info', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ uid: cardId })
+        body: JSON.stringify({ uid: cardId }),
+        credentials: 'include'
       });
 
       const data = await response.json();
@@ -127,7 +130,8 @@ function EditProfile() {
       const response = await fetch('https://1secstory.com/change_public_info', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
+        credentials: 'include'
       });
 
       const data = await response.json();
@@ -138,7 +142,8 @@ function EditProfile() {
             await fetch('https://1secstory.com/add_redirect', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ link: payload.qr_link })
+              body: JSON.stringify({ link: payload.qr_link }),
+              credentials: 'include'
             });
           } catch (error) {
             console.error('Failed to update redirect', error);

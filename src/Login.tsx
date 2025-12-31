@@ -25,7 +25,8 @@ function Login() {
       const response = await fetch('https://1secstory.com/otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email, password }),
+        credentials: 'include'
       });
 
       const data = await response.json();
@@ -49,7 +50,8 @@ function Login() {
       const response = await fetch('https://1secstory.com/verify_login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password, otp, card_id: cardId })
+        body: JSON.stringify({ email, password, otp, card_id: cardId }),
+        credentials: 'include'
       });
 
       const data = await response.json();
