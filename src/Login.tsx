@@ -22,7 +22,7 @@ function Login() {
 
     setIsLoading(true);
     try {
-      const response = await fetch('https://1secstory.com/otp', {
+      const response = await fetch('https://api.1secstory.com/otp', {
   method: 'POST',
   credentials: 'include', // 🔥 REQUIRED
   headers: { 'Content-Type': 'application/json' },
@@ -48,7 +48,7 @@ function Login() {
 
     setIsLoading(true);
     try {
-      const response = await fetch('https://1secstory.com/verify_login', {
+      const response = await fetch('https://api.1secstory.com/verify_login', {
         method: 'POST',
   credentials: 'include', // 🔥 REQUIRED
         headers: { 'Content-Type': 'application/json' },
