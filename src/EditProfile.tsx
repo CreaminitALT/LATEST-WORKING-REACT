@@ -177,9 +177,8 @@ function EditProfile() {
 
       <div className="relative z-10 w-full max-w-2xl mx-auto">
         <div className="text-center mb-6 md:mb-8">
-          <div className="inline-flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-full border-2 border-gray-300 mb-3 md:mb-4">
-            <span className="text-xl md:text-2xl font-bold text-gray-700">1</span>
-            <span className="text-[10px] md:text-xs text-gray-500">sec</span>
+          <div className="inline-block mb-3 md:mb-4">
+            <img src="/image copy.png" alt="1SecStory" className="w-20 h-20 md:w-24 md:h-24 object-contain" />
           </div>
 
           <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-1 md:mb-2">Edit Profile</h1>
