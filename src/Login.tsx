@@ -61,7 +61,7 @@ function Login() {
       if (data.success) {
         setMessage('Login successful! Redirecting...');
         setTimeout(() => {
-          window.location.href = 'https://1secstory.com/edit_profile';
+          window.location.href = '/edit_profile';
         }, 1000);
       } else {
         setMessage(data.message || 'Login failed');
