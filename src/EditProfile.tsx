@@ -123,7 +123,7 @@ function EditProfile() {
         linkedin: getValueOrNull(formData.linkedin || ''),
         website: getValueOrNull(formData.website || ''),
         payment_link: getValueOrNull(formData.payment_link || ''),
-        nfc_pin_hash: getValueOrNull(formData.nfc_pin_hash || ''),
+        nfc_pin_hash: formData.nfc_pin_hash,
         qr_link: getValueOrNull(formData.qr_link || '')
       };
 
