@@ -84,7 +84,7 @@ function Login() {
         <div className="text-center mb-6 md:mb-8">
           {/* Logo */}
           <div className="inline-block mb-3 md:mb-4">
-            <img src="/image copy.png" alt="1SecStory" className="w-20 h-20 md:w-24 md:h-24 object-contain" />
+            <img src="/artboard_2_1.png" alt="1SecStory" className="w-20 h-20 md:w-24 md:h-24 object-contain" />
           </div>
 
           {/* Heading */}

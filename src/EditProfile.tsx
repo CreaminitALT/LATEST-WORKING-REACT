@@ -181,7 +181,7 @@ function EditProfile() {
       <div className="relative z-10 w-full max-w-2xl mx-auto">
         <div className="text-center mb-6 md:mb-8">
           <div className="inline-block mb-3 md:mb-4">
-            <img src="/image copy.png" alt="1SecStory" className="w-20 h-20 md:w-24 md:h-24 object-contain" />
+            <img src="/artboard_2_1.png" alt="1SecStory" className="w-20 h-20 md:w-24 md:h-24 object-contain" />
           </div>
 
           <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-1 md:mb-2">Edit Profile</h1>
